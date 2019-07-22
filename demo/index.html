@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gload Demo</title>
+  <style>
+    .gload-image-container {
+      background-color: #f6f6f6;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gload-image-container img,
+    .gload-image-container canvas {
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      transition: opacity 1s linear;
+    }
+
+    .gload-image-container img.loaded,
+    .gload-image-container canvas.loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="gload-image-container" data-large="./images/new-home-page.jpg">
+    <img src="./images/s-new-home-page.jpg" class="img-small" />
+    <div style="padding-bottom: 75%;"></div>
+  </div>
+  <script src="./gload.min.js"></script>
+  <script>
+    new Gload()
+  </script>
+</body>
+
+</html>

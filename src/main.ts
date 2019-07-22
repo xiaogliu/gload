@@ -10,6 +10,7 @@
  */
 
 // StackBlur is an open source canvas gauss algorithm blur image
+// @ts-ignore
 import * as StackBlur from "@/utils/stackblur-es.min.js";
 // @ts-ignore
 import * as utils from "@/utils/tool.ts";
@@ -26,7 +27,7 @@ class ProgressiveLoad {
 
   constructor(options?: IOptions) {
     const defaultOptions: IOptions = {
-      seletor: ".p-load-image-container",
+      seletor: ".gload-image-container",
       radius: 30,
       disabled: false
     };
