@@ -70,3 +70,5 @@ tsconfig 更多介绍？
 
 使用 rollup-plugin-terser 
 
+6. 需要添加 mode， css blur 或者 canvas
+
