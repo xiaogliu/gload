@@ -21,25 +21,26 @@ function setBlur(e: HTMLElement, options: types.IOptions, processImage?: types.p
   // when small image loaded handling it use canvas
   const img: HTMLImageElement = new Image();
   const $small: HTMLImageElement = e.querySelector("img");
-
+  let $canvas: HTMLCanvasElement;
   // canvas mode
   if (processImage) {
     const addInnerHtml: string = `
               <canvas></canvas>
             `;
     e.innerHTML = e.innerHTML + addInnerHtml;
-    this.$canvas = e.querySelector("canvas");
+    $canvas = e.querySelector("canvas");
   } else {
     // css3 mode
-    $small.style.filter = "blur(15px)";
+    $small.style.filter = "blur(5px)";
+    $small.style.transform = "scale(1)";
   }
 
   img.src = $small.src;
   img.onload = () => {
     // canvas mode
     if (processImage) {
-      processImage($small, this.$canvas, this.options.radius);
-      utils.addClass(this.$canvas, "loaded");
+      processImage($small, $canvas, options.radius);
+      utils.addClass($canvas, "loaded");
     }
 
     // css3 mode

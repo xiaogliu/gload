@@ -9,7 +9,7 @@ type processImg = (
 interface IOptions {
   seletor?: string;
   radius?: number;
-  enabledClassName?: string;
+  disabledClassName?: string;
   mode?: string;
 }
 

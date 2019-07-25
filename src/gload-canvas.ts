@@ -27,8 +27,9 @@ class GloadCanvas {
 
       // set each image progessive loading
       imageContainer.forEach(e => {
-        // if
-        if (utils.hasClass(e, this.options.enabledClassName)) {
+        if (!this.options.disabledClassName) {
+          common.setBlur(e, this.options, processImage)
+        } else if (!utils.hasClass(e, this.options.disabledClassName)) {
           common.setBlur(e, this.options, processImage)
         }
 
