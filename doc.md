@@ -75,3 +75,4 @@ tsconfig 更多介绍？
 7. 使用别名，比如 `@` 之后 ts 检查出错，现在使用 `// @ts-ignore`，[块级注释还没支持](https://github.com/Microsoft/TypeScript/issues/19573)
 8. 默认解析 ts 无解
 
+9. babel use loose [你的Tree-Shaking并没什么卵用](https://juejin.im/post/5a5652d8f265da3e497ff3de)
