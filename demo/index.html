@@ -22,12 +22,19 @@
       top: 0;
       left: 0;
       transition: opacity 1s linear;
+      width: 100%;
     }
 
     .gload-image-container img.loaded,
     .gload-image-container canvas.loaded {
       opacity: 1;
     }
+
+    /* .img-small {
+      /* filter: blur(15px);
+      /* this is needed so Safari keeps sharp edges */
+      /* transform: scale(1); */ 
+    /* } */
   </style>
 </head>
 
@@ -38,7 +45,9 @@
   </div>
   <script src="./gload.min.js"></script>
   <script>
-    new Gload()
+    new Gload({
+      mode: 'css3'
+    })
   </script>
 </body>
 

@@ -8,32 +8,31 @@
  * @date 2019-07-10
  * @author Xiaoguang Liu <vincexgliu@gmail.com>
  */
-
 // StackBlur is an open source canvas gauss algorithm blur image
 // @ts-ignore
-import * as StackBlur from "@/utils/stackblur-es.min.js";
+import { image as processImage } from "@/utils/stackblur-es.js";
 // @ts-ignore
 import * as utils from "@/utils/tool.ts";
 
 interface IOptions {
   seletor?: string;
   radius?: number;
-  disabled?: boolean;
   enabledClassName?: string;
+  mode?: string;
 }
 
-class ProgressiveLoad {
+class Gload {
   private options: IOptions;
+  private $canvas: HTMLCanvasElement;
 
   constructor(options?: IOptions) {
     const defaultOptions: IOptions = {
       seletor: ".gload-image-container",
       radius: 30,
-      disabled: false
+      mode: "canvas"
     };
 
     this.options = { ...defaultOptions, ...options };
-
     this.init();
   }
 
@@ -48,26 +47,31 @@ class ProgressiveLoad {
 
       // set each image progessive loading
       imageContainer.forEach(e => {
-        // only valid for
-        if (
-          !this.options.disabled ||
-          utils.hasClass(e, this.options.enabledClassName)
-        ) {
-          const addInnerHtml: string = `
-            <canvas></canvas>
-          `;
-          e.innerHTML = e.innerHTML + addInnerHtml;
-          const $canvas: HTMLCanvasElement = e.querySelector("canvas");
-
+        // if
+        if (utils.hasClass(e, this.options.enabledClassName)) {
           // when small image loaded handling it use canvas
           const img: HTMLImageElement = new Image();
           const $small: HTMLImageElement = e.querySelector("img");
+
+          if (this.options.mode === "canvas") {
+            const addInnerHtml: string = `
+            <canvas></canvas>
+          `;
+            e.innerHTML = e.innerHTML + addInnerHtml;
+            this.$canvas = e.querySelector("canvas");
+          } else {
+            $small.style.filter = "blur(15px)";
+          }
           img.src = $small.src;
           img.onload = () => {
-            StackBlur.image($small, $canvas, this.options.radius);
+            // canvas mode
+            if (this.options.mode === "canvas") {
+              processImage($small, this.$canvas, this.options.radius);
+              utils.addClass(this.$canvas, "loaded");
+            }
 
-            // let canvas fade in load
-            utils.addClass($canvas, "loaded");
+            // css3 mode
+            utils.addClass($small, "loaded");
           };
         }
 
@@ -86,4 +90,4 @@ class ProgressiveLoad {
   }
 }
 
-export default ProgressiveLoad;
+export default Gload;
