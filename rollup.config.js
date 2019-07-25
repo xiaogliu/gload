@@ -13,7 +13,7 @@ const DATE = `${now.getMonth() +
   1}/${now.getDate()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
 
 export default {
-  input: "./src/main.ts",
+  input: "./src/index.ts",
   output: [
     {
       // script

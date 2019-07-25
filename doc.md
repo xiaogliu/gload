@@ -73,4 +73,5 @@ tsconfig 更多介绍？
 6. 需要添加 mode， css blur 或者 canvas
 
 7. 使用别名，比如 `@` 之后 ts 检查出错，现在使用 `// @ts-ignore`，[块级注释还没支持](https://github.com/Microsoft/TypeScript/issues/19573)
+8. 默认解析 ts 无解
 
