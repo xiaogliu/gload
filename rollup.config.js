@@ -22,6 +22,12 @@ export default {
       name: "Gload"
     },
     {
+      // script
+      file: "./dist/gload-umd.min.js",
+      format: "umd",
+      name: "Gload"
+    },
+    {
       // es6 module
       file: "./dist/gload-es.min.js",
       format: "es"

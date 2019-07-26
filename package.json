@@ -2,7 +2,8 @@
   "name": "gload",
   "version": "1.0.0",
   "description": "gload means \"gradually load\" and it's used to load images gradually with Gaussian blur.",
-  "main": "main.js",
+  "main": "dist/gload-umd.min.js",
+  "module": "dist/gload-es.min.js",
   "scripts": {
     "start": "NODE_ENV=dev rollup -w -c",
     "build": "NODE_ENV=prod rollup -c",
